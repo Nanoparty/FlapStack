@@ -1,4 +1,8 @@
 # FlapStack
+
+![version](https://img.shields.io/badge/Version-1.0-green)
+![engine](https://img.shields.io/badge/Engine-Unity-blue)
+
 Arcade Game where you stack pancakes and other foods
 Made for Android mobile devices
 
