@@ -10,3 +10,5 @@ Made for Android mobile devices
 ![Screenshot](2.png)
 ![Screenshot](3.png)
 ![Screenshot](4.png)
+
+© Nathan Foote | 2018
