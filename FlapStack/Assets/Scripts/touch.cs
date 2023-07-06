@@ -14,7 +14,7 @@ public class touch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             if(SceneManager.GetActiveScene().name == "Menu")
                 SceneManager.LoadScene("Main", LoadSceneMode.Single);

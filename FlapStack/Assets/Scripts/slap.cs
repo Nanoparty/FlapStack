@@ -9,6 +9,14 @@ public class slap : MonoBehaviour
     bool removed = false;
     public bool landed = false;
     Rigidbody rb;
+
+    private void Awake()
+    {
+        //audioClip.Play();
+        AudioSource audio = this.GetComponent<AudioSource>();
+        //audio.Play();
+        rb = GetComponent<Rigidbody>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +52,11 @@ public class slap : MonoBehaviour
             removed = true;
             GameObject gsm = GameObject.FindGameObjectWithTag("gm");
             gsm.GetComponent<GameManager>().setCakes(-1);
+            gsm.GetComponent<GameManager>().count--;
         }
+
+        if (collider.gameObject.GetComponent<slap>() == null) return;
+
         if (collider.tag == "cake" && !played && collider.gameObject.GetComponent<slap>().Landed == true) {
             AudioSource audio = this.GetComponent<AudioSource>();
             audio.Play();

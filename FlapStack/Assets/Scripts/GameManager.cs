@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     int sel;
     int state = 1;
+    int height = 5;
+
+    public int count = 0;
     
     GameObject panStack;
     public int numCakes;
@@ -46,13 +49,13 @@ public class GameManager : MonoBehaviour
         {
             case 1:
 
-                GameObject.FindWithTag("shopCanvas").GetComponent<Canvas>().enabled = false;
+                //GameObject.FindWithTag("shopCanvas").GetComponent<Canvas>().enabled = false;
                 GameObject.FindGameObjectWithTag("gameCanvas").GetComponent<Canvas>().enabled = true;
 
-                if (Input.touchCount > 0 || Input.GetKeyDown("space"))
+                if (Input.GetKeyUp(KeyCode.Mouse0)) //(Input.touchCount > 0 || Input.GetKeyDown("space"))
                 {
-                    Touch touch = Input.GetTouch(0); 
-                    if (touch.phase == TouchPhase.Ended)
+                    //Touch touch = Input.GetTouch(0); 
+                    if (true)
                     {
                         switch (sel)
                         {
@@ -60,21 +63,21 @@ public class GameManager : MonoBehaviour
                                 //pancake.GetComponent<Rigidbody>().mass = 100 - numCakes;
                                 if(numCakes%10 == 0 && numCakes > 1)
                                 {
-                                    InstantiateSingle(butter, 0, 3);
+                                    InstantiateSingle(butter, 0, height);
                                 }else
                                 {
-                                    InstantiateSingle(pancake, 0, 3);
+                                    InstantiateSingle(pancake, 0, height);
                                 }
                                 
                                 break;
                             case 2:
-                                InstantiateSingle(butter, 0, 3);
+                                InstantiateSingle(butter, 0, height);
                                 break;
                             case 3:
-                                InstantiateSingle(egg, 0, 3);
+                                InstantiateSingle(egg, 0, height);
                                 break;
                             case 4:
-                                InstantiateSingle(donut, 0, 3);
+                                InstantiateSingle(donut, 0, height);
                                 break;
                         }
 
@@ -100,7 +103,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 //uiText.text = "◆" + numCakes + "";
-                coinText.text = "◆" + numCakes + "";
+                coinText.text = "◆" + count + "";
                 break;
             case 2:
                 GameObject.FindGameObjectWithTag("gameCanvas").GetComponent<Canvas>().enabled = false;
@@ -118,6 +121,7 @@ public class GameManager : MonoBehaviour
 
     void InstantiateSingle(GameObject prefab, float xCoord, float yCoord)
     {
+        count++;
         // The position to be instantiated at is based on the coordinates.
         Vector3 position = new Vector3(xCoord, yCoord, 0f);
 
